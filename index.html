@@ -1,265 +1,56 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio BTS SIO - Ethan Jacquier</title>
-
 <style>
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f5f5f5;
+    font-family: Arial;
+    display: flex;
+}
+
+/* MENU */
+nav {
+    width: 200px;
+    background: #444;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+}
+
+nav a {
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: #555;
+}
+
+/* CONTENU */
+.main {
     margin-left: 200px;
+    width: 100%;
+    background: #f5f5f5;
 }
 
 header {
-    background-color: #222;
+    background: #222;
     color: white;
     padding: 30px;
     text-align: center;
 }
 
-nav {
-    background-color: #444;
-    width: 200px;
-    position: fixed;
-    height: 100vh;
-    padding-top: 20px;
-}
-
-nav a {
-    display: block;
-    color: white;
-    padding: 12px;
-    text-decoration: none;
-    font-weight: bold;
-    border-left: 4px solid transparent;
-}
-
-nav a:hover {
-    background-color: #555;
-    border-left: 4px solid white;
-}
-
 section {
     background: white;
-    margin: 20px;
+    margin: 20px auto;
     padding: 30px;
     border-radius: 10px;
     max-width: 1000px;
 }
 
-h2 {
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
-}
-
-.badge {
-    display: inline-block;
-    background: #222;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin: 3px;
-}
-
 .project {
     border-left: 4px solid #444;
     padding-left: 15px;
-    margin-bottom: 25px;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #222;
-    color: white;
+    margin-bottom: 20px;
 }
 </style>
-</head>
-
-<body>
-
-<header>
-<h1>Ethan Jacquier</h1>
-<p>BTS SIO - Option SISR</p>
-</header>
-
-<nav>
-<a href="#home">Accueil</a>
-<a href="#profile">Profil</a>
-<a href="#skills">Compétences</a>
-<a href="#projects">Projets</a>
-<a href="#stage">Stages</a>
-<a href="#veille">Veille</a>
-<a href="#tableau">Tableau E5</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<section id="home">
-<h2>Accueil</h2>
-<p>Bienvenue sur mon portfolio de BTS SIO. Ce site présente mon parcours, mes compétences et mes réalisations professionnelles.</p>
-</section>
-
-<section id="profile">
-<h2>Profil & Parcours</h2>
-<p>Bac STI2D (SIN) → BTS SIO SISR</p>
-<p>Passionné par les systèmes, réseaux et la cybersécurité.</p>
-
-<p><strong>Objectif professionnel :</strong> devenir administrateur systèmes et réseaux, avec une spécialisation en cybersécurité.</p>
-</section>
-
-<section id="skills">
-<h2>Compétences</h2>
-
-<h3>Techniques</h3>
-<span class="badge">VLAN</span>
-<span class="badge">Routage</span>
-<span class="badge">Active Directory</span>
-<span class="badge">Windows Server</span>
-<span class="badge">Linux</span>
-<span class="badge">Virtualisation</span>
-<span class="badge">Python</span>
-<span class="badge">HTML/CSS</span>
-
-<h3>Professionnelles</h3>
-<ul>
-<li>Gestion des incidents</li>
-<li>Administration systèmes et réseaux</li>
-<li>Sécurité informatique</li>
-<li>Travail en équipe</li>
-<li>Autonomie</li>
-</ul>
-</section>
-
-<section id="projects">
-<h2>Projets</h2>
-
-<div class="project">
-<h3>Robot Sumo</h3>
-<p><strong>Contexte :</strong> Projet de première STI2D</p>
-<p><strong>Objectif :</strong> créer un robot autonome capable de détecter et pousser ses adversaires</p>
-<p><strong>Technologies :</strong> Arduino, capteurs</p>
-<p><strong>Compétences :</strong> programmation, logique, tests</p>
-<p><strong>Résultat :</strong> robot fonctionnel utilisé en compétition</p>
-</div>
-
-<div class="project">
-<h3>Poulailler automatisé</h3>
-<p><strong>Contexte :</strong> Projet de terminale</p>
-<p><strong>Objectif :</strong> automatiser l’ouverture et la fermeture du poulailler</p>
-<p><strong>Technologies :</strong> microcontrôleur, capteurs température/luminosité</p>
-<p><strong>Compétences :</strong> automatisation, capteurs, programmation</p>
-<p><strong>Résultat :</strong> système autonome fonctionnel</p>
-</div>
-
-</section>
-
-<section id="stage">
-<h2>Stages</h2>
-
-<div class="project">
-<h3>Préfecture — Administration Systèmes et Réseaux</h3>
-<p><strong>Durée :</strong> 6 semaines</p>
-
-<p><strong>Missions :</strong></p>
-<ul>
-<li>Analyse des permissions (méthode AGDLP)</li>
-<li>Scripts d’automatisation</li>
-<li>Suppression comptes fantômes</li>
-<li>Organisation des droits</li>
-</ul>
-
-<p><strong>Compétences acquises :</strong></p>
-<ul>
-<li>Gestion Active Directory</li>
-<li>Sécurité des accès</li>
-<li>Automatisation</li>
-</ul>
-</div>
-
-<div class="project">
-<h3>Cisa Informatique — Support & Infrastructure</h3>
-
-<p><strong>Missions :</strong></p>
-<ul>
-<li>Déploiement Windows 11</li>
-<li>Installation logiciels</li>
-<li>Virtualisation (Debian)</li>
-<li>Supervision (Netdata)</li>
-</ul>
-
-<p><strong>Compétences acquises :</strong></p>
-<ul>
-<li>Déploiement système</li>
-<li>Virtualisation</li>
-<li>Supervision</li>
-</ul>
-</div>
-
-</section>
-
-<section id="veille">
-<h2>Veille technologique</h2>
-
-<p><strong>Sujet :</strong> Informatique quantique</p>
-
-<h3>Pourquoi ce sujet ?</h3>
-<p>
-L’informatique quantique est une technologie émergente qui pourrait révolutionner le traitement des données
-et la cybersécurité. Ce domaine représente un enjeu majeur pour l’avenir de l’informatique.
-</p>
-
-<h3>Objectifs</h3>
-<ul>
-<li>Comprendre le fonctionnement des qubits</li>
-<li>Suivre les avancées technologiques</li>
-<li>Analyser les impacts sur la sécurité</li>
-</ul>
-
-<h3>Thématiques</h3>
-<ul>
-<li>Superposition et intrication</li>
-<li>Algorithmes quantiques</li>
-<li>Cryptographie post-quantique</li>
-</ul>
-
-<h3>Outils</h3>
-<ul>
-<li>Google Alertes</li>
-<li>Flux RSS</li>
-<li>Sites spécialisés (IBM, ANSSI)</li>
-</ul>
-
-<h3>Analyse</h3>
-<p>
-Les ordinateurs quantiques pourraient casser les systèmes de chiffrement actuels (comme RSA),
-ce qui oblige à développer de nouvelles méthodes de sécurité adaptées.
-</p>
-
-<h3>Conclusion</h3>
-<p>
-L’informatique quantique représente une révolution technologique majeure avec un impact important
-sur la cybersécurité et les systèmes informatiques.
-</p>
-
-</section>
-
-<section id="tableau">
-<h2>Tableau de synthèse E5</h2>
-<p>👉 Garde ton tableau actuel ici (il est déjà très bien 👍)</p>
-</section>
-
-<section id="contact">
-<h2>Contact</h2>
-<p>Email : ton email</p>
-<p>GitHub : ton lien</p>
-</section>
-
-<footer>
-<p>© 2026 - Portfolio BTS SIO</p>
-</footer>
-
-</body>
-</html>
