@@ -1,7 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio BTS SIO - Ethan Jacquier</title>
+
 <style>
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     display: flex;
 }
 
@@ -10,9 +17,9 @@ nav {
     width: 200px;
     background: #444;
     min-height: 100vh;
+    position: fixed;
     display: flex;
     flex-direction: column;
-    position: fixed;
 }
 
 nav a {
@@ -20,10 +27,12 @@ nav a {
     padding: 12px;
     text-decoration: none;
     font-weight: bold;
+    border-left: 4px solid transparent;
 }
 
 nav a:hover {
     background: #555;
+    border-left: 4px solid white;
 }
 
 /* CONTENU */
@@ -33,6 +42,7 @@ nav a:hover {
     background: #f5f5f5;
 }
 
+/* HEADER */
 header {
     background: #222;
     color: white;
@@ -40,6 +50,7 @@ header {
     text-align: center;
 }
 
+/* SECTIONS */
 section {
     background: white;
     margin: 20px auto;
@@ -48,9 +59,179 @@ section {
     max-width: 1000px;
 }
 
+h2 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* BADGES */
+.badge {
+    display: inline-block;
+    background: #222;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+/* PROJETS */
 .project {
     border-left: 4px solid #444;
     padding-left: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #222;
+    color: white;
 }
 </style>
+
+</head>
+
+<body>
+
+<nav>
+<a href="#home">Accueil</a>
+<a href="#profile">Profil</a>
+<a href="#skills">Compétences</a>
+<a href="#projects">Projets</a>
+<a href="#stage">Stages</a>
+<a href="#veille">Veille</a>
+<a href="#tableau">Tableau E5</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="main">
+
+<header>
+<h1>Ethan Jacquier</h1>
+<p>BTS SIO - Option SISR</p>
+</header>
+
+<section id="home">
+<h2>Accueil</h2>
+<p>Bienvenue sur mon portfolio de BTS SIO. Ce site présente mon parcours, mes compétences et mes réalisations professionnelles.</p>
+</section>
+
+<section id="profile">
+<h2>Profil & Parcours</h2>
+<p>Bac STI2D (SIN) → BTS SIO SISR</p>
+<p>Passionné par les systèmes, réseaux et la cybersécurité.</p>
+
+<p><strong>Objectif professionnel :</strong> devenir administrateur systèmes et réseaux, avec une spécialisation en cybersécurité.</p>
+</section>
+
+<section id="skills">
+<h2>Compétences</h2>
+
+<h3>Techniques</h3>
+<span class="badge">VLAN</span>
+<span class="badge">Routage</span>
+<span class="badge">Active Directory</span>
+<span class="badge">Windows Server</span>
+<span class="badge">Linux</span>
+<span class="badge">Virtualisation</span>
+<span class="badge">Python</span>
+<span class="badge">HTML/CSS</span>
+
+<h3>Professionnelles</h3>
+<ul>
+<li>Gestion des incidents</li>
+<li>Administration systèmes et réseaux</li>
+<li>Sécurité informatique</li>
+<li>Travail en équipe</li>
+<li>Autonomie</li>
+</ul>
+</section>
+
+<section id="projects">
+<h2>Projets</h2>
+
+<div class="project">
+<h3>Robot Sumo</h3>
+<p><strong>Contexte :</strong> Projet STI2D</p>
+<p><strong>Objectif :</strong> robot autonome</p>
+<p><strong>Technologies :</strong> Arduino, capteurs</p>
+<p><strong>Résultat :</strong> robot fonctionnel</p>
+</div>
+
+<div class="project">
+<h3>Poulailler automatisé</h3>
+<p><strong>Objectif :</strong> automatisation</p>
+<p><strong>Technologies :</strong> capteurs</p>
+<p><strong>Résultat :</strong> système autonome</p>
+</div>
+
+</section>
+
+<section id="stage">
+<h2>Stages</h2>
+
+<div class="project">
+<h3>Préfecture</h3>
+<ul>
+<li>Active Directory</li>
+<li>Scripts automatisation</li>
+<li>Sécurité des accès</li>
+</ul>
+</div>
+
+<div class="project">
+<h3>Cisa Informatique</h3>
+<ul>
+<li>Déploiement Windows</li>
+<li>Virtualisation Debian</li>
+<li>Supervision</li>
+</ul>
+</div>
+
+</section>
+
+<section id="veille">
+<h2>Veille technologique</h2>
+
+<p><strong>Sujet :</strong> Informatique quantique</p>
+
+<h3>Pourquoi ce sujet ?</h3>
+<p>
+Technologie émergente pouvant révolutionner l’informatique et la cybersécurité.
+</p>
+
+<h3>Objectifs</h3>
+<ul>
+<li>Comprendre les qubits</li>
+<li>Suivre les avancées</li>
+<li>Analyser l’impact sécurité</li>
+</ul>
+
+<h3>Analyse</h3>
+<p>
+Les ordinateurs quantiques pourraient casser les systèmes de chiffrement actuels,
+ce qui nécessite de nouvelles méthodes de sécurité.
+</p>
+
+</section>
+
+<section id="tableau">
+<h2>Tableau E5</h2>
+<p>Ajoute ici ton tableau (celui que tu avais déjà)</p>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>Email : ton email</p>
+<p>GitHub : ton lien</p>
+</section>
+
+<footer>
+<p>© 2026 - Portfolio BTS SIO</p>
+</footer>
+
+</div>
+
+</body>
+</html>
