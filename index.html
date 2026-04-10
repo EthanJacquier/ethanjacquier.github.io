@@ -12,6 +12,7 @@ body {
     display: flex;
 }
 
+/* MENU */
 nav {
     width: 200px;
     background: #444;
@@ -34,12 +35,14 @@ nav a:hover {
     border-left: 4px solid white;
 }
 
+/* CONTENU */
 .main {
     margin-left: 200px;
     width: 100%;
     background: #f5f5f5;
 }
 
+/* HEADER */
 header {
     background: #222;
     color: white;
@@ -47,6 +50,7 @@ header {
     text-align: center;
 }
 
+/* SECTIONS */
 section {
     background: white;
     margin: 20px auto;
@@ -60,12 +64,36 @@ h2 {
     padding-bottom: 10px;
 }
 
+/* PROJETS */
 .project {
     border-left: 4px solid #444;
     padding-left: 15px;
     margin-bottom: 25px;
 }
 
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+th {
+    background: #2c3e50;
+    color: white;
+}
+
+.section-title {
+    background: #eaf0fb;
+    font-weight: bold;
+}
+
+/* FOOTER */
 footer {
     text-align: center;
     padding: 20px;
@@ -81,7 +109,6 @@ footer {
 <nav>
 <a href="#home">Accueil</a>
 <a href="#profile">Profil</a>
-<a href="#skills">Compétences</a>
 <a href="#projects">Projets</a>
 <a href="#stage">Stages</a>
 <a href="#veille">Veille</a>
@@ -149,13 +176,69 @@ footer {
 
 <section id="veille">
 <h2>Veille technologique</h2>
+
 <p><strong>Sujet :</strong> Informatique quantique</p>
-<p>Impact sur la cybersécurité et le chiffrement.</p>
+
+<p>
+L’informatique quantique est une technologie émergente qui pourrait révolutionner
+la cybersécurité et le traitement des données.
+</p>
+
 </section>
 
 <section id="tableau">
-<h2>Tableau E5</h2>
-<p>Ajoute ton tableau ici</p>
+<h2>Tableau de synthèse E5</h2>
+
+<table>
+
+<tr>
+<th>Réalisations</th>
+<th>Période</th>
+<th>Gérer</th>
+<th>Incidents</th>
+<th>Projet</th>
+<th>Service</th>
+<th>Veille</th>
+</tr>
+
+<tr class="section-title">
+<td colspan="7">📚 Formation</td>
+</tr>
+
+<tr>
+<td>Robot Sumo</td>
+<td>STI2D</td>
+<td></td><td></td><td>✔</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Poulailler automatisé</td>
+<td>Terminale</td>
+<td></td><td></td><td>✔</td><td></td><td></td>
+</tr>
+
+<tr class="section-title">
+<td colspan="7">🏢 Stage 1 (Préfecture)</td>
+</tr>
+
+<tr>
+<td>Active Directory, scripts, sécurité</td>
+<td>6 semaines</td>
+<td>✔</td><td>✔</td><td></td><td>✔</td><td>✔</td>
+</tr>
+
+<tr class="section-title">
+<td colspan="7">🏢 Stage 2 (Cisa Informatique)</td>
+</tr>
+
+<tr>
+<td>Windows, VM, supervision</td>
+<td>7 semaines</td>
+<td>✔</td><td>✔</td><td></td><td>✔</td><td>✔</td>
+</tr>
+
+</table>
+
 </section>
 
 <section id="contact">
