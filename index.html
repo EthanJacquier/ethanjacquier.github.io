@@ -87,6 +87,22 @@
             margin-bottom: 30px;
         }
 
+        .stages-container {
+            display: flex;
+            gap: 30px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .stage-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -138,30 +154,32 @@
 <section id="stage">
     <h2>Mes Stages</h2>
 
-    <div class="project">
-        <h3>Stage 1 - Préfecture (Administration Systèmes et Réseaux) — 6 semaines</h3>
-        <p><strong>Objectif :</strong> Rapatrier des archives depuis différents sites sur les serveurs de la préfecture.</p>
+    <div class="stages-container">
+        <div class="stage-card">
+            <h3>Stage 1 - Préfecture (Administration Systèmes et Réseaux) — 6 semaines</h3>
+            <p><strong>Objectif :</strong> Rapatrier des archives depuis différents sites sur les serveurs de la préfecture.</p>
 
-        <h4>Missions principales</h4>
-        <ul>
-            <li>Analyse des permissions d'accès avec la méthode AGDLP.</li>
-            <li>Développement de scripts d'automatisation pour analyser les droits utilisateurs.</li>
-            <li>Suppression de groupes vides et de comptes fantômes.</li>
-            <li>Création d'arborescences Active Directory.</li>
-        </ul>
-    </div>
+            <h4>Missions principales</h4>
+            <ul>
+                <li>Analyse des permissions d'accès avec la méthode AGDLP.</li>
+                <li>Développement de scripts d'automatisation pour analyser les droits utilisateurs.</li>
+                <li>Suppression de groupes vides et de comptes fantômes.</li>
+                <li>Création d'arborescences Active Directory.</li>
+            </ul>
+        </div>
 
-    <div class="project">
-        <h3>Stage 2 - Cisa Informatique (Support & Infrastructure)</h3>
+        <div class="stage-card">
+            <h3>Stage 2 - Cisa Informatique (Support & Infrastructure)</h3>
 
-        <h4>Missions principales</h4>
-        <ul>
-            <li>Installation de Windows 11 sur différents postes.</li>
-            <li>Installation de logiciels : Chrome, Adobe, TeamViewer.</li>
-            <li>Mises à jour matériel DELL.</li>
-            <li>Installation d'une VM Debian.</li>
-            <li>Configuration de Netdata et Beszel.</li>
-        </ul>
+            <h4>Missions principales</h4>
+            <ul>
+                <li>Installation de Windows 11 sur différents postes.</li>
+                <li>Installation de logiciels : Chrome, Adobe, TeamViewer.</li>
+                <li>Mises à jour matériel DELL.</li>
+                <li>Installation d'une VM Debian.</li>
+                <li>Configuration de Netdata et Beszel.</li>
+            </ul>
+        </div>
     </div>
 </section>
 
