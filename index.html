@@ -1,300 +1,553 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio BTS SIO</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Portfolio BTS SIO</title>
+<style>
+    :root {
+        --bg: #f7f6f3;
+        --surface: #ffffff;
+        --surface2: #f0efe9;
+        --text: #000000;
+        --text-muted: #111111;
+        --accent: #2563eb;
+        --accent-soft: #eff4ff;
+        --border: #e5e4df;
+        --nav-bg: #1a1a1a;
+        --nav-text: #c8c6c0;
+        --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05);
+        --shadow-hover: 0 4px 12px rgba(0,0,0,0.08), 0 12px 32px rgba(0,0,0,0.08);
+        --radius: 14px;
+    }
+
+    .dark-mode {
+        --bg: #111110;
+        --surface: #1c1c1a;
+        --surface2: #252523;
+        --text: #ffffff;
+        --text-muted: #e0dedd;
+        --accent: #4f86f7;
+        --accent-soft: #1a2540;
+        --border: #2e2e2b;
+        --nav-bg: #0e0e0d;
+        --nav-text: #c8c6c0;
+        --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+        --shadow-hover: 0 4px 12px rgba(0,0,0,0.4), 0 12px 32px rgba(0,0,0,0.3);
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: var(--bg);
+        margin-left: 180px;
+        font-size: 18px;
+        transition: background-color 0.3s, color 0.3s;
+        color: var(--text);
+    }
+
+    nav {
+        background-color: var(--nav-bg);
+        width: 180px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding-top: 30px;
+        box-sizing: border-box;
+        z-index: 100;
+        border-right: 1px solid rgba(255,255,255,0.04);
+    }
+
+    nav a {
+        color: var(--nav-text);
+        padding: 14px 20px;
+        text-decoration: none;
+        font-weight: bold;
+        border-left: 4px solid transparent;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        font-size: 16px;
+    }
+
+    nav a:hover {
+        background-color: rgba(255,255,255,0.05);
+        border-left-color: var(--accent);
+        color: #fff;
+    }
+
+    section {
+        min-height: 100vh;
+        padding: 80px;
+        max-width: 1300px;
+        margin: auto;
+        background: transparent;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: var(--text);
+    }
+
+    h3 {
+        color: var(--text);
+    }
+
+    p, li {
+        color: var(--text);
+    }
+
+    .home-section {
+        text-align: center;
+    }
+
+    .home-section h1 {
+        font-size: 4em;
+        margin-bottom: 10px;
+        color: var(--text);
+    }
+
+    .home-section p {
+        font-size: 1.3em;
+        color: var(--text);
+    }
+
+    .project {
+        background-color: var(--surface2);
+        padding: 25px;
+        border-radius: var(--radius);
+        margin-bottom: 25px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+        transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .project::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 4px; height: 100%;
+        background: var(--accent);
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+
+    .project:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .project:hover::before {
+        opacity: 1;
+    }
+
+    .project a {
+        display: inline-block;
+        margin-top: 10px;
+        margin-right: 10px;
+        padding: 8px 16px;
+        background-color: var(--surface);
+        color: var(--text);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 0.85em;
+        border: 1px solid var(--border);
+        transition: all 0.2s;
+    }
+
+    .project a::before {
+        content: '↓ ';
+        color: var(--accent);
+        font-size: 0.9em;
+    }
+
+    .project a:hover {
+        background-color: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+    }
+
+    .project a:hover::before {
+        color: #fff;
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+    }
+
+    .skill-card {
+        background-color: var(--surface2);
+        padding: 25px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .skill-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .skill-card h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+    }
+
+    .stages-container {
+        display: flex;
+        gap: 30px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .stage-card {
+        flex: 1;
+        min-width: 420px;
+        background-color: var(--surface2);
+        padding: 30px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .stage-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .stage-card h4 {
+        color: var(--text);
+        font-size: 0.85em;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 18px;
+        margin-bottom: 8px;
+    }
+
+    .stage-card a {
+        color: var(--text);
+        text-decoration: none;
+    }
+
+    .stage-card a:hover {
+        text-decoration: underline;
+    }
+
+    .veille-article {
+        background-color: var(--surface2);
+        padding: 20px 25px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        margin-bottom: 16px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .veille-article:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .veille-article h4 {
+        margin: 0 0 8px 0;
+        color: var(--text);
+        font-size: 1em;
+    }
+
+    .veille-article p {
+        margin: 0 0 10px 0;
+        color: var(--text);
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
+
+    .veille-article a {
+        color: var(--text);
+        font-size: 0.85em;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .veille-article a:hover {
+        text-decoration: underline;
+    }
+
+    #theme-toggle {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        z-index: 1000;
+        padding: 9px 16px;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        background-color: var(--surface);
+        color: var(--text);
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.8em;
+        font-family: Arial, sans-serif;
+        transition: all 0.2s;
+        box-shadow: var(--shadow);
+    }
+
+    #theme-toggle:hover {
+        box-shadow: var(--shadow-hover);
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f5f5f5;
-            margin-left: 180px;
+            margin-left: 0;
         }
-        header {
-            background-color: #222;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+
         nav {
-            background-color: #444;
-            width: 180px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding-top: 30px;
-            box-sizing: border-box;
-            z-index: 100;
+            position: relative;
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+            overflow-x: auto;
+            padding-top: 0;
         }
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            border-left: 4px solid transparent;
-            transition: background 0.2s, border-color 0.2s;
-        }
-        nav a:hover {
-            background-color: #555;
-            border-left-color: white;
-        }
+
         section {
-            padding: 40px;
-            max-width: 1000px;
-            margin: auto;
-            background: white;
-            margin-top: 20px;
-            border-radius: 10px;
+            padding: 40px 25px;
         }
-        h2 {
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
-        }
-        .project {
-            margin-bottom: 30px;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #222;
-            color: white;
-            margin-top: 20px;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-<header>
-    <h1>Ethan Jacquier</h1>
-    <p>BTS SIO - Option SISR</p>
-</header>
+
+<button id="theme-toggle">🌙 Mode sombre</button>
+
 <nav>
-    <a href="#about">À propos</a>
-    <a href="#projects">Projets</a>
-    <a href="#skills">Compétences</a>
-    <a href="#stage">Stage</a>
-    <a href="#tableau-e5">Tableau E5</a>
-    <a href="#contact">Contact</a>
+<a href="#home">Accueil</a>
+<a href="#about">À propos de moi</a>
+<a href="#skills">Compétences</a>
+<a href="#projects">Projets</a>
+<a href="#stage">Stages</a>
+<a href="#veille">Veille technologique</a>
 </nav>
 
-<section id="about">
-    <h2>À propos</h2>
-    <p>Je suis étudiant en deuxième année de BTS SIO, option SISR. Avant cela, j'ai obtenu un baccalauréat STI2D, spécialité SIN.</p>
-    <p>J'aime l'informatique car, bien que tout le monde l'utilise au quotidien, peu de personnes savent réellement comment cela fonctionne.</p>
-    <p><strong>Objectif professionnel :</strong> Je souhaite développer mes compétences en administration systèmes et réseaux, et évoluer vers un poste d'administrateur réseau ou en cybersécurité.</p>
+<section id="home" class="home-section">
+<h1>Ethan Jacquier</h1>
+<p>BTS SIO - Option SISR</p>
+<p style="margin-top:18px; font-size:1em;">📧 <a href="mailto:ethanje@laposte.net" style="color:var(--text); font-weight:bold; text-decoration:none;">ethanje@laposte.net</a></p>
+<br>
+<a href="CV_Ethan_Jacquier.odt" download style="display:inline-block; margin-top:20px; margin-right:12px; padding:12px 24px; background-color:var(--surface2); color:var(--text); text-decoration:none; border-radius:10px; font-weight:bold; transition:0.2s; font-size:0.9em; border:1px solid var(--border);">
+    Télécharger mon CV
+</a>
+<a href="Tableau_E5_Jacquier_Ethan.xlsx" download style="display:inline-block; margin-top:20px; padding:12px 24px; background-color:var(--surface2); color:var(--text); text-decoration:none; border-radius:10px; font-weight:bold; transition:0.2s; font-size:0.9em; border:1px solid var(--border);">
+    Tableau E5 – Épreuve
+</a>
 </section>
 
-<section id="projects">
-    <h2>Projets</h2>
-    <div class="project">
-        <h3>Projet 1 - Robot Sumo</h3>
-        <p><strong>Contexte :</strong> Projet réalisé en première, consistant à programmer un robot sumo pour affronter ceux des autres équipes de la classe.</p>
-        <p><strong>Objectifs :</strong> Créer un robot autonome capable de détecter ses adversaires.</p>
-        <p><strong>Technologies :</strong> Arduino, capteurs.</p>
-        <p><strong>Mon rôle :</strong> Programmation et tests.</p>
-    </div>
-    <div class="project">
-        <h3>Projet 2 - Poulailler automatisé</h3>
-        <p><strong>Contexte :</strong> Projet réalisé en terminale, consistant à créer un poulailler automatisé. Le système devait ouvrir et fermer la porte en fonction de paramètres comme la luminosité ou la température.</p>
-        <p><strong>Objectifs :</strong> Automatiser la gestion du poulailler.</p>
-        <p><strong>Technologies :</strong> Microcontrôleur, capteurs de température et de lumière.</p>
-        <p><strong>Mon rôle :</strong> Conception du programme et intégration des capteurs.</p>
-    </div>
+<section id="about">
+<h2>À propos de moi</h2>
+<p>J'ai obtenu un baccalauréat STI2D (Sciences et Technologies de l'Industrie et du Développement Durable) avec l'option SIN (Systèmes d'Information et Numérique) au lycée Arbez Carme à Bellignat.</p>
+<p>Je poursuis actuellement mes études au lycée Carriat à Bourg-en-Bresse, où je prépare un BTS SIO (Services Informatiques aux Organisations).</p>
+<p>Dans ce BTS, j'ai choisi l'option SISR (Solutions d'Infrastructure, Systèmes et Réseaux), qui est spécialisée dans l'administration des systèmes, des réseaux et de l'infrastructure informatique.</p>
+<p>Je souhaite continuer dans le domaine de l'informatique et exercer plus tard un métier orienté vers les réseaux et les infrastructures.</p>
+<p>Je n'ai pas encore défini précisément le métier que je souhaite exercer, mais je souhaite continuer à développer mes compétences dans ce domaine.</p>
 </section>
 
 <section id="skills">
-    <h2>Compétences</h2>
-    <h3>Techniques</h3>
-    <ul>
-        <li>Réseaux : VLAN, routage, Cisco Packet Tracer</li>
-        <li>Systèmes : Windows Server, Linux, Virtualisation</li>
-        <li>Langages : notions de Python, HTML/CSS</li>
-        <li>Logiciels : Pack Microsoft Office / LibreOffice</li>
-    </ul>
-    <h3>Personnelles</h3>
-    <ul>
-        <li>Travail d'équipe</li>
-        <li>Autonomie</li>
-        <li>Sérieux</li>
-    </ul>
+<h2>Mes Compétences</h2>
+
+<div class="skills-grid">
+
+<div class="skill-card">
+<h3>🖥️ Administration Système</h3>
+<p>Windows Server</p>
+<p>Linux Debian</p>
+<p>Active Directory</p>
+</div>
+
+<div class="skill-card">
+<h3>🌐 Réseaux</h3>
+<p>TCP/IP</p>
+<p>VLANs</p>
+<p>Routage</p>
+</div>
+
+<div class="skill-card">
+<h3>🔐 Cybersécurité</h3>
+<p>Analyse de logs</p>
+</div>
+
+<div class="skill-card">
+<h3>💻 Virtualisation</h3>
+<p>VMware</p>
+<p>Hyper-V</p>
+<p>Proxmox</p>
+</div>
+
+<div class="skill-card">
+<h3>🗄️ Bases de données</h3>
+<p>MySQL / MariaDB</p>
+<p>Sauvegarde & Restauration</p>
+</div>
+
+<div class="skill-card">
+<h3>📄 Bureautique</h3>
+<p>Pack Office</p>
+<p>LibreOffice</p>
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<h2>Mes Projets</h2>
+
+<div class="project">
+    <h3>Projet Atelier Professionnel</h3>
+    <p>Mise en place de l'infrastructure informatique complète d'une entreprise fictive de services informatiques aux PME. Le projet se déroule en plusieurs phases progressives : segmentation du réseau par VLANs avec routage inter-VLAN sur équipements Cisco, sécurisation des accès via pfSense et mise en place d'un VPN OpenVPN pour le télétravail, déploiement d'un stockage centralisé TrueNAS intégré à l'Active Directory, puis installation d'un ERP Odoo avec load balancing Nginx et base de données PostgreSQL.</p>
+    <a href="ethan_jacquier_AP_Mission_1-1.pdf" target="_blank" download>Compte rendu</a>
+    <a href="ethan_jacquier_AP_Mission_2-1.pdf" target="_blank" download>Compte rendu</a>
+</div>
+
+<div class="project">
+    <h3>TP Haute Disponibilité</h3>
+    <p>Mise en place d'une architecture hautement disponible afin d'assurer la continuité de service en cas de défaillance d'un composant de l'infrastructure. Ce TP couvre la configuration d'un cluster avec répartition de charge, la gestion du basculement automatique et la mise en œuvre de mécanismes de redondance.</p>
+    <a href="ethan_jacquier_HA-1.pdf" target="_blank" download>Compte rendu</a>
+</div>
+
+<div class="project">
+    <h3>TP Virtualisation</h3>
+    <p>Déploiement d'un datacenter virtualisé complet à partir de zéro : installation de deux hyperviseurs Proxmox formant un cluster, mise en place d'un contrôleur de domaine Windows Server pour centraliser l'authentification, configuration d'un stockage partagé TrueNAS en miroir exposé via NFS, intégration de l'Active Directory à Proxmox pour la gestion des accès, et déploiement d'un Proxmox Backup Server pour assurer la sauvegarde et la restauration des machines virtuelles.</p>
+    <a href="Rapport_Virtualisation_Ethan_Jacquier.docx" target="_blank" download>Compte rendu</a>
+</div>
+
+<div class="project">
+    <h3>TP Syslog</h3>
+    <p>Mise en place d'un serveur de journalisation centralisé avec Rsyslog pour collecter et analyser les logs des équipements réseau et des serveurs de l'infrastructure. Le TP s'appuie sur deux machines virtuelles Debian : un serveur recevant les journaux à distance et un client configuré pour lui transmettre ses logs système.</p>
+    <a href="Syslog_JacquierEthan.docx" target="_blank" download>Compte rendu</a>
+</div>
+
+<div class="project">
+    <h3>TP ToIP</h3>
+    <p>Ce TP regroupe deux parties complémentaires autour de la téléphonie sur IP. La première porte sur l'installation et la configuration d'un serveur de téléphonie Asterisk sous Debian, utilisant le protocole SIP avec un softphone 3CX et un téléphone IP Cisco SPA514G. La seconde consiste en une analyse de trames réseau avec Wireshark pour comprendre l'établissement, le déroulement et la clôture d'un appel SIP, ainsi que le flux audio transporté par le protocole RTP.</p>
+    <a href="jacquier_ethan_04_3_-_Serveur_Asterik.docx" target="_blank" download>Compte rendu</a>
+    <a href="jacquier_ethan_04_4_-_Analyse_Trame_TOIP_et_écoute.docx" target="_blank" download>Compte rendu</a>
+</div>
 </section>
 
 <section id="stage">
-    <h2>Stages</h2>
+<h2>Mes Stages</h2>
+<div class="stages-container">
 
-    <div class="project">
-        <h3>Stage 1 - Préfecture (Administration Systèmes et Réseaux) — 6 semaines</h3>
-        <p><strong>Objectif :</strong> Rapatrier des archives depuis différents sites sur les serveurs de la préfecture, afin de réduire la demande en matériel et renforcer la sécurité via Active Directory.</p>
-        <h4>Missions principales</h4>
-        <ul>
-            <li>Analyse des permissions d'accès avec la méthode AGDLP.</li>
-            <li>Développement de scripts d'automatisation pour analyser les droits utilisateurs.</li>
-            <li>Identification et suppression de groupes vides et de comptes fantômes pour améliorer la sécurité.</li>
-            <li>Création de tableaux et arborescences pour visualiser les groupes et leurs droits.</li>
-        </ul>
-        <h4>Compétences acquises</h4>
-        <ul>
-            <li>Gestion des droits et permissions dans Active Directory.</li>
-            <li>Utilisation des listes de contrôle d'accès (ACL).</li>
-            <li>Programmation de scripts d'administration pour automatiser des tâches.</li>
-            <li>Amélioration de la sécurité et de la lisibilité des systèmes.</li>
-        </ul>
-    </div>
+<div class="stage-card">
+<h3>Stage 1 - Préfecture — 6 semaines</h3>
+<p><strong>Présentation :</strong> La préfecture est une administration publique représentant l'État au niveau départemental. Elle gère notamment les dossiers administratifs, la sécurité et les infrastructures informatiques nécessaires au fonctionnement des services.</p>
+<p>Des archives provenant d'autres sites que la préfecture ont été analysées à l'aide de scripts PowerShell afin de déterminer qui avait accès à quoi et de générer des tableaux Excel recensant les droits des utilisateurs sur l'ensemble des dossiers.</p>
 
-    <div class="project">
-        <h3>Stage 2 - Cisa Informatique (Support & Infrastructure)</h3>
-        <h4>Missions principales</h4>
-        <ul>
-            <li>Installation de Windows 11 sur des PCs et réalisation des mises à jour Windows.</li>
-            <li>Installation de logiciels : Google Chrome, Adobe Acrobat, TeamViewer.</li>
-            <li>Mises à jour du matériel DELL via les outils DELL Update et DELL Command.</li>
-            <li>Rédaction d'une synthèse sur les bonnes pratiques de cybersécurité.</li>
-            <li>Installation d'une VM Debian 13 sur un serveur Windows Server 2025.</li>
-            <li>Installation et configuration de Netdata et Beszel sur la VM Debian.</li>
-        </ul>
-        <h4>Compétences acquises</h4>
-        <ul>
-            <li>Déploiement et configuration de postes de travail sous Windows 11.</li>
-            <li>Gestion et mise à jour de matériel DELL en environnement professionnel.</li>
-            <li>Virtualisation : création d'une VM Linux sous Windows Server 2025.</li>
-            <li>Mise en place d'outils de supervision système (Netdata, Beszel).</li>
-            <li>Rédaction technique (synthèse cybersécurité).</li>
-        </ul>
-    </div>
+<h4>Missions principales</h4>
+<ul>
+<li>Câblage et brassage de prises réseau pour préparer le déménagement de bureau des agents de la DDT</li>
+<li>Création d'arborescences Active Directory</li>
+</ul>
+</div>
+
+<div class="stage-card">
+<h3>Stage 2 - CISA Informatique — 7 semaines</h3>
+<p><strong>Présentation :</strong> CISA Informatique est une entreprise spécialisée dans l'installation, la maintenance et le support informatique pour les professionnels. Elle accompagne ses clients dans la gestion de leurs infrastructures et équipements.</p>
+<h4>Préparation de postes</h4>
+<ul>
+<li>Installation de Windows 11</li>
+<li>Mises à jour Windows</li>
+<li>Mises à jour des pilotes et utilitaires DELL (Dell Command / Dell Update)</li>
+<li>Installation des logiciels : Google Chrome, Adobe Acrobat Reader, TeamViewer</li>
+<li>Connexion et configuration des imprimantes réseau</li>
+</ul>
+<h4>Réinstallation serveur</h4>
+<ul>
+<li>Réinstallation de Windows Server 2025 à l'aide d'une clé USB bootable</li>
+<li>Création de la clé bootable avec le logiciel Rufus</li>
+<li>Démarrage et installation du serveur via le BIOS/boot USB</li>
+</ul>
+<h4>Virtualisation et supervision</h4>
+<ul>
+<li>Création de machines virtuelles Debian sur un hyperviseur Windows Server (Hyper-V)</li>
+<li>Installation de PowerPanel, NUT et Beszel pour la supervision et le suivi système</li>
+</ul>
+<h4>Observation du support informatique</h4>
+<ul>
+<li>Observation du fonctionnement du support technique et du traitement des tickets utilisateurs</li>
+</ul>
+<h4>Cybersécurité</h4>
+<ul>
+<li>Réalisation d'une synthèse de cybersécurité à destination des clients de CISA Informatique — <a href="SynthèseSécuritéInformatique.docx" download>Télécharger le document</a></li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section id="veille">
+<h2>Veille Technologique</h2>
+<p>Dans le cadre de ma formation, je réalise une veille technologique sur l'informatique quantique.</p>
+<p>Dans l'imaginaire collectif, l'informatique quantique est souvent perçue comme une version extrêmement puissante d'un ordinateur classique. En réalité, il s'agit d'un changement de paradigme : ce ne sont pas des machines plus rapides pour tout, mais des machines fondamentalement différentes.</p>
+<p>Les ordinateurs quantiques sont donc moins polyvalents que les ordinateurs classiques : ils ne sont pas adaptés à un usage quotidien (navigation web, bureautique, etc.). En revanche, ils sont beaucoup plus performants pour certains types de calculs très complexes.</p>
+<p>Ils sont particulièrement utiles dans plusieurs domaines :</p>
+<ul>
+<li>Cryptographie (et remise en question de certains systèmes de sécurité actuels)</li>
+<li>Optimisation (logistique, transport, finance)</li>
+<li>Simulation de molécules en chimie et en pharmacie</li>
+<li>Recherche scientifique et physique fondamentale</li>
+<li>Intelligence artificielle (accélération de certains algorithmes)</li>
+</ul>
+
+<p>Pour rester informé des dernières avancées, je me suis inscrit à la newsletter <a href="https://quantumworld.news/newsletter/" target="_blank" style="color:var(--text); font-weight:bold;">Quantum World</a>, qui envoie régulièrement des actualités sur l'informatique quantique.</p>
+
+<h3 style="margin-top:30px;">Articles et sources</h3>
+
+<div class="veille-article">
+    <h4>L'informatique quantique sort du laboratoire : ce que 2026 va réellement apporter — Futura Sciences</h4>
+    <p>Cet article publié en janvier 2026 explique que l'informatique quantique entre dans une phase de consolidation technologique. Loin d'un ordinateur tout-puissant, 2026 voit s'intensifier la course entre différentes technologies de qubits (supraconducteurs, photoniques, ions piégés…). L'article insiste sur la nécessité de distinguer les promesses marketing des applications concrètes réellement disponibles à court terme.</p>
+    <a href="https://www.futura-sciences.com/tech/actualites/ordinateur-quantique-informatique-quantique-sort-laboratoire-ce-2026-va-reellement-apporter-129974/" target="_blank">→ Lire l'article</a>
+</div>
+
+<div class="veille-article">
+    <h4>Informatique quantique : exemples d'utilisation actuels à considérer en 2025 — CyberSpass</h4>
+    <p>Cet article présente des cas d'usage concrets déjà en cours : optimisation logistique, découverte de médicaments par simulation moléculaire, renforcement de la cybersécurité et amélioration de certains algorithmes d'intelligence artificielle. Il permet de comprendre quels secteurs professionnels sont déjà impactés par les premières avancées quantiques, et lesquels le seront prochainement.</p>
+    <a href="https://www.cyberspass.fr/informatique-quantique-exemples-dutilisation-actuels-a-considerer-en-2025/" target="_blank">→ Lire l'article</a>
+</div>
+
+<div class="veille-article">
+    <h4>L'informatique quantique en 2026 : encore du battage ou enfin utile ? — Tech Insider</h4>
+    <p>Cet article adopte un regard critique et équilibré sur l'état réel de l'informatique quantique en 2026. Il distingue ce qui relève encore de la recherche fondamentale de ce qui commence à trouver des applications industrielles, notamment dans la finance et la pharmacie. L'article souligne que malgré des avancées réelles, un usage grand public reste encore lointain.</p>
+    <a href="https://tech-insider.org/fr/l-informatique-quantique-en-2026-encore-du-battage-ou-enfin-utile/" target="_blank">→ Lire l'article</a>
+</div>
 
 </section>
 
-<section id="tableau-e5">
-    <h2>Tableau de synthèse E5 — BTS SIO 2026</h2>
-    <p><strong>NOM et prénom :</strong> Jacquier Ethan &nbsp;&nbsp;&nbsp; <strong>Option :</strong> SISR</p>
-    <p style="margin-bottom: 20px;"><strong>Centre de formation :</strong> &nbsp;&nbsp;&nbsp;&nbsp; <strong>N° candidat :</strong></p>
+<script>
+const toggleButton = document.getElementById("theme-toggle");
 
-    <div style="overflow-x: auto;">
-        <table style="width:100%; border-collapse: collapse; font-size: 0.82em; table-layout: fixed;">
-            <colgroup>
-                <col style="width: 22%">
-                <col style="width: 10%">
-                <col style="width: 12%">
-                <col style="width: 12%">
-                <col style="width: 12%">
-                <col style="width: 11%">
-                <col style="width: 11%">
-                <col style="width: 10%">
-            </colgroup>
-            <thead>
-                <tr style="background-color: #2c3e50; color: white; text-align: center;">
-                    <th rowspan="2" style="border: 1px solid #bbb; padding: 8px; vertical-align: middle;">Réalisations professionnelles<br><small>(intitulé et documents associés)</small></th>
-                    <th rowspan="2" style="border: 1px solid #bbb; padding: 8px; vertical-align: middle;">Période</th>
-                    <th style="border: 1px solid #bbb; padding: 8px;">Gérer le patrimoine informatique</th>
-                    <th style="border: 1px solid #bbb; padding: 8px;">Répondre aux incidents et demandes</th>
-                    <th style="border: 1px solid #bbb; padding: 8px;">Développer la présence en ligne</th>
-                    <th style="border: 1px solid #bbb; padding: 8px;">Travailler en mode projet</th>
-                    <th style="border: 1px solid #bbb; padding: 8px;">Mettre à disposition un service informatique</th>
-                    <th style="border: 1px solid #bbb; padding: 8px;">Organiser son développement professionnel</th>
-                </tr>
-                <tr style="background-color: #3d5166; color: #dce6f0; font-size: 0.78em; text-align: center;">
-                    <td style="border: 1px solid #bbb; padding: 6px;">Recenser les ressources · Habilitations · Continuité de service · Sauvegardes</td>
-                    <td style="border: 1px solid #bbb; padding: 6px;">Collecter et orienter des demandes · Traiter les services réseau, système et applicatifs</td>
-                    <td style="border: 1px solid #bbb; padding: 6px;">Image de l'organisation · Référencement · Évolution site Web</td>
-                    <td style="border: 1px solid #bbb; padding: 6px;">Analyser les objectifs · Planifier · Évaluer les indicateurs</td>
-                    <td style="border: 1px solid #bbb; padding: 6px;">Tests d'intégration · Déployer un service · Accompagner les utilisateurs</td>
-                    <td style="border: 1px solid #bbb; padding: 6px;">Environnement d'apprentissage · Veille · Identité professionnelle · Projet professionnel</td>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- EN COURS DE FORMATION -->
-                <tr style="background-color: #eaf0fb;">
-                    <td colspan="8" style="border: 1px solid #bbb; padding: 8px; font-weight: bold; color: #2c3e50;">📚 Réalisations en cours de formation</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #bbb; padding: 8px;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #bbb; padding: 8px;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #bbb; padding: 8px;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                </tr>
+toggleButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    toggleButton.textContent = document.body.classList.contains("dark-mode") ? "☀️ Mode clair" : "🌙 Mode sombre";
+});
+</script>
 
-                <!-- MILIEU PRO 1ère ANNÉE -->
-                <tr style="background-color: #eaf0fb;">
-                    <td colspan="8" style="border: 1px solid #bbb; padding: 8px; font-weight: bold; color: #2c3e50;">🏢 Réalisations en milieu professionnel — 1ère année</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #bbb; padding: 8px;">Stage Préfecture — Administration Systèmes et Réseaux<br><small>Analyse AGDLP, scripts d'automatisation, suppression comptes fantômes, arborescences AD</small></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center; font-size: 0.85em;">6 semaines</td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;">✔</td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;">✔</td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;">✔</td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;">✔</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #bbb; padding: 8px;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                </tr>
-
-                <!-- MILIEU PRO 2ème ANNÉE -->
-                <tr style="background-color: #eaf0fb;">
-                    <td colspan="8" style="border: 1px solid #bbb; padding: 8px; font-weight: bold; color: #2c3e50;">🏢 Réalisations en milieu professionnel — 2ème année</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #bbb; padding: 8px;">Stage Cisa Informatique — Support & Infrastructure<br><small>Déploiement Windows 11, logiciels (Chrome, Adobe, TeamViewer), MAJ DELL, VM Debian 13 + Netdata + Beszel, synthèse cybersécurité</small></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center; font-size: 0.85em;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;">✔</td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;">✔</td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;">✔</td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;">✔</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #bbb; padding: 8px;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                    <td style="border: 1px solid #bbb; padding: 8px; text-align: center;"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <p style="margin-top: 10px; font-size: 0.8em; color: #888;">✔ = compétence mise en œuvre lors de la réalisation</p>
-</section>
-
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email : <a href="/cdn-cgi/l/email-protection#31544559505f5b54715d50415e4245541f5f5445"><span class="__cf_email__" data-cfemail="1d7869757c7377785d717c6d726e697833737869">[email&#160;protected]</sp
+</body>
+</html>
