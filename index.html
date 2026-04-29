@@ -9,8 +9,8 @@
         --bg: #f7f6f3;
         --surface: #ffffff;
         --surface2: #f0efe9;
-        --text: #1a1a1a;
-        --text-muted: #6b6b6b;
+        --text: #000000;
+        --text-muted: #111111;
         --accent: #2563eb;
         --accent-soft: #eff4ff;
         --border: #e5e4df;
@@ -25,8 +25,8 @@
         --bg: #111110;
         --surface: #1c1c1a;
         --surface2: #252523;
-        --text: #e8e6e0;
-        --text-muted: #888784;
+        --text: #ffffff;
+        --text-muted: #e0dedd;
         --accent: #4f86f7;
         --accent-soft: #1a2540;
         --border: #2e2e2b;
@@ -105,7 +105,7 @@
     }
 
     p, li {
-        color: var(--text-muted);
+        color: var(--text);
     }
 
     .home-section {
@@ -120,7 +120,7 @@
 
     .home-section p {
         font-size: 1.3em;
-        color: var(--text-muted);
+        color: var(--text);
     }
 
     .project {
@@ -252,6 +252,45 @@
         text-decoration: underline;
     }
 
+    .veille-article {
+        background-color: var(--surface2);
+        padding: 20px 25px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        margin-bottom: 16px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .veille-article:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .veille-article h4 {
+        margin: 0 0 8px 0;
+        color: var(--text);
+        font-size: 1em;
+    }
+
+    .veille-article p {
+        margin: 0 0 10px 0;
+        color: var(--text);
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
+
+    .veille-article a {
+        color: var(--accent);
+        font-size: 0.85em;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .veille-article a:hover {
+        text-decoration: underline;
+    }
+
     #theme-toggle {
         position: fixed;
         top: 15px;
@@ -275,9 +314,7 @@
         transform: translateY(-1px);
     }
 
-    #veille p { color: var(--text-muted); margin-bottom: 12px; }
-    #veille li { color: var(--text-muted); margin-bottom: 4px; }
-    #contact p { color: var(--text-muted); }
+    #contact p { color: var(--text); }
 
     @media (max-width: 900px) {
         body {
@@ -317,8 +354,11 @@
 <h1>Ethan Jacquier</h1>
 <p>BTS SIO - Option SISR</p>
 <br>
-<a href="CV_Ethan_Jacquier.odt" download style="display:inline-block; margin-top:20px; padding:12px 24px; background-color:var(--accent); color:white; text-decoration:none; border-radius:10px; font-weight:bold; transition:0.2s; font-size:0.9em;">
+<a href="CV_Ethan_Jacquier.odt" download style="display:inline-block; margin-top:20px; margin-right:12px; padding:12px 24px; background-color:var(--accent); color:white; text-decoration:none; border-radius:10px; font-weight:bold; transition:0.2s; font-size:0.9em;">
     Télécharger mon CV
+</a>
+<a href="Tableau_E5_Jacquier_Ethan.xlsx" download style="display:inline-block; margin-top:20px; padding:12px 24px; background-color:var(--surface2); color:var(--text); text-decoration:none; border-radius:10px; font-weight:bold; transition:0.2s; font-size:0.9em; border:1px solid var(--border);">
+    Tableau E5 – Épreuve
 </a>
 </section>
 
@@ -381,35 +421,35 @@
 <h2>Mes Projets</h2>
 
 <div class="project">
-    <h3>Projet AP – Infrastructure d'entreprise Hyperlink</h3>
+    <h3>Projet Atelier Professionnel</h3>
     <p>Mise en place de l'infrastructure informatique complète d'une entreprise fictive de services informatiques aux PME. Le projet se déroule en plusieurs phases progressives : segmentation du réseau par VLANs avec routage inter-VLAN sur équipements Cisco, sécurisation des accès via pfSense et mise en place d'un VPN OpenVPN pour le télétravail, déploiement d'un stockage centralisé TrueNAS intégré à l'Active Directory, puis installation d'un ERP Odoo avec load balancing Nginx et base de données PostgreSQL.</p>
-    <a href="ethan_jacquier_AP_Mission_1-1.pdf" target="_blank" download>Compte rendu Mission 1</a>
-    <a href="ethan_jacquier_AP_Mission_2-1.pdf" target="_blank" download>Compte rendu Mission 2</a>
+    <a href="ethan_jacquier_AP_Mission_1-1.pdf" target="_blank" download>Compte rendu</a>
+    <a href="ethan_jacquier_AP_Mission_2-1.pdf" target="_blank" download>Compte rendu</a>
 </div>
 
 <div class="project">
     <h3>TP Haute Disponibilité</h3>
     <p>Mise en place d'une architecture hautement disponible afin d'assurer la continuité de service en cas de défaillance d'un composant de l'infrastructure. Ce TP couvre la configuration d'un cluster avec répartition de charge, la gestion du basculement automatique et la mise en œuvre de mécanismes de redondance.</p>
-    <a href="ethan_jacquier_HA-1.pdf" target="_blank" download>Voir le compte rendu</a>
+    <a href="ethan_jacquier_HA-1.pdf" target="_blank" download>Compte rendu</a>
 </div>
 
 <div class="project">
-    <h3>TP Virtualisation – Cluster Proxmox & TrueNAS</h3>
+    <h3>TP Virtualisation</h3>
     <p>Déploiement d'un datacenter virtualisé complet à partir de zéro : installation de deux hyperviseurs Proxmox formant un cluster, mise en place d'un contrôleur de domaine Windows Server pour centraliser l'authentification, configuration d'un stockage partagé TrueNAS en miroir exposé via NFS, intégration de l'Active Directory à Proxmox pour la gestion des accès, et déploiement d'un Proxmox Backup Server pour assurer la sauvegarde et la restauration des machines virtuelles.</p>
-    <a href="Rapport_Virtualisation_Ethan_Jacquier.docx" target="_blank" download>Voir le compte rendu</a>
+    <a href="Rapport_Virtualisation_Ethan_Jacquier.docx" target="_blank" download>Compte rendu</a>
 </div>
 
 <div class="project">
-    <h3>TP Syslog – Journalisation centralisée</h3>
+    <h3>TP Syslog</h3>
     <p>Mise en place d'un serveur de journalisation centralisé avec Rsyslog pour collecter et analyser les logs des équipements réseau et des serveurs de l'infrastructure. Le TP s'appuie sur deux machines virtuelles Debian : un serveur recevant les journaux à distance et un client configuré pour lui transmettre ses logs système.</p>
-    <a href="Syslog_JacquierEthan.docx" target="_blank" download>Voir le compte rendu</a>
+    <a href="Syslog_JacquierEthan.docx" target="_blank" download>Compte rendu</a>
 </div>
 
 <div class="project">
-    <h3>TP ToIP – Serveur Asterisk & Analyse de trames</h3>
+    <h3>TP ToIP</h3>
     <p>Ce TP regroupe deux parties complémentaires autour de la téléphonie sur IP. La première porte sur l'installation et la configuration d'un serveur de téléphonie Asterisk sous Debian, utilisant le protocole SIP avec un softphone 3CX et un téléphone IP Cisco SPA514G. La seconde consiste en une analyse de trames réseau avec Wireshark pour comprendre l'établissement, le déroulement et la clôture d'un appel SIP, ainsi que le flux audio transporté par le protocole RTP.</p>
-    <a href="jacquier_ethan_04_3_-_Serveur_Asterik.docx" target="_blank" download>Compte rendu – Serveur Asterisk</a>
-    <a href="jacquier_ethan_04_4_-_Analyse_Trame_TOIP_et_écoute.docx" target="_blank" download>Compte rendu – Analyse de trames</a>
+    <a href="jacquier_ethan_04_3_-_Serveur_Asterik.docx" target="_blank" download>Compte rendu</a>
+    <a href="jacquier_ethan_04_4_-_Analyse_Trame_TOIP_et_écoute.docx" target="_blank" download>Compte rendu</a>
 </div>
 </section>
 
@@ -420,13 +460,14 @@
 <div class="stage-card">
 <h3>Stage 1 - Préfecture — 6 semaines</h3>
 <p><strong>Présentation :</strong> La préfecture est une administration publique représentant l'État au niveau départemental. Elle gère notamment les dossiers administratifs, la sécurité et les infrastructures informatiques nécessaires au fonctionnement des services.</p>
-<p><strong>Objectif :</strong> Rapatrier des archives depuis différents sites sur les serveurs de la préfecture.</p>
+<p><strong>Objectif :</strong> Rapatrier des archives depuis différents sites (tels que la DDT – Direction Départementale des Territoires, et d'autres services déconcentrés de l'État) sur les serveurs de la préfecture.</p>
 <h4>Missions principales</h4>
 <ul>
 <li>Analyse des permissions d'accès avec la méthode AGDLP</li>
 <li>Développement de scripts d'automatisation</li>
 <li>Suppression de groupes vides et comptes fantômes</li>
 <li>Création d'arborescences Active Directory</li>
+<li>Câblage et brassage de prises réseau pour préparer le déménagement de bureau des agents de la DDT</li>
 </ul>
 </div>
 
@@ -479,11 +520,34 @@
 <li>Recherche scientifique et physique fondamentale</li>
 <li>Intelligence artificielle (accélération de certains algorithmes)</li>
 </ul>
+
+<p>Pour rester informé des dernières avancées, je me suis inscrit à la newsletter <a href="https://quantumworld.news/newsletter/" target="_blank" style="color:var(--accent);">Quantum World</a>, qui envoie régulièrement des actualités sur l'informatique quantique.</p>
+
+<h3 style="margin-top:30px;">Articles et sources</h3>
+
+<div class="veille-article">
+    <h4>L'informatique quantique sort du laboratoire : ce que 2026 va réellement apporter — Futura Sciences</h4>
+    <p>Cet article publié en janvier 2026 explique que l'informatique quantique entre dans une phase de consolidation technologique. Loin d'un ordinateur tout-puissant, 2026 voit s'intensifier la course entre différentes technologies de qubits (supraconducteurs, photoniques, ions piégés…). L'article insiste sur la nécessité de distinguer les promesses marketing des applications concrètes réellement disponibles à court terme.</p>
+    <a href="https://www.futura-sciences.com/tech/actualites/ordinateur-quantique-informatique-quantique-sort-laboratoire-ce-2026-va-reellement-apporter-129974/" target="_blank">→ Lire l'article</a>
+</div>
+
+<div class="veille-article">
+    <h4>Informatique quantique : exemples d'utilisation actuels à considérer en 2025 — CyberSpass</h4>
+    <p>Cet article présente des cas d'usage concrets déjà en cours : optimisation logistique, découverte de médicaments par simulation moléculaire, renforcement de la cybersécurité et amélioration de certains algorithmes d'intelligence artificielle. Il permet de comprendre quels secteurs professionnels sont déjà impactés par les premières avancées quantiques, et lesquels le seront prochainement.</p>
+    <a href="https://www.cyberspass.fr/informatique-quantique-exemples-dutilisation-actuels-a-considerer-en-2025/" target="_blank">→ Lire l'article</a>
+</div>
+
+<div class="veille-article">
+    <h4>L'informatique quantique en 2026 : encore du battage ou enfin utile ? — Tech Insider</h4>
+    <p>Cet article adopte un regard critique et équilibré sur l'état réel de l'informatique quantique en 2026. Il distingue ce qui relève encore de la recherche fondamentale de ce qui commence à trouver des applications industrielles, notamment dans la finance et la pharmacie. L'article souligne que malgré des avancées réelles, un usage grand public reste encore lointain.</p>
+    <a href="https://tech-insider.org/fr/l-informatique-quantique-en-2026-encore-du-battage-ou-enfin-utile/" target="_blank">→ Lire l'article</a>
+</div>
+
 </section>
 
 <section id="contact">
 <h2>Contact</h2>
-<p>Email : tonadresse@email.com</p>
+<p>Email : <a href="mailto:ethanje@laposte.net" style="color:var(--accent);">ethanje@laposte.net</a></p>
 </section>
 
 <script>
